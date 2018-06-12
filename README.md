@@ -10,6 +10,7 @@ pip install oneconfig
 ```
 
 ## Usage
+For example, there is a config file named `appsettings.Development.json`
 
 ```python
 
@@ -20,8 +21,12 @@ class MyConfig(Configuration):
     domain = "localhost"
     
 myconfig = MyConfig()
-myconfig.add_file_by_prefix("appsettings")
+myconfig.add_file_by_prefix("appsettings") # it will loads all config files startswith `appsettings`
+print(MyConfig.domain) # localhost 
 
+myconfig.mode = 'Production'
+myconfig.add_file_by_prefix("appsettings", follow_mode=True)
+print(MyConfig.domain) # empty
 ```
 
 ## LICENSE

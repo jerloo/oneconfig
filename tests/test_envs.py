@@ -68,3 +68,10 @@ def test_option():
     o = configuration.option('web', o)
     assert o['url'] == 'localhost'
     assert o.url == 'localhost'
+
+
+def test_dict():
+    configuration = Configuration()
+    configuration.add_file_by_prefix('appsettings')
+    assert isinstance(configuration, dict)
+    print configuration.items()

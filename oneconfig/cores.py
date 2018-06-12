@@ -172,3 +172,6 @@ class Configuration(dict):
         m = get_config_by_path_value(path, value)
         self.update(m)
         return self
+
+    def mappings(self):
+        return dict(self.items())
